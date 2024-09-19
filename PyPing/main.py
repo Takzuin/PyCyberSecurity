@@ -18,12 +18,14 @@ else:
         # Usamos subprocess para capturar la salida del ping
         try:
             # Parámetros según el sistema operativo
-            rep = subprocess.run(
-                ["ping", "-n" if os.name == "nt" else "-c", "1", ipEquipo],
-                stdout=subprocess.DEVNULL,  # Redirigir la salida para no mostrarla
-                stderr=subprocess.DEVNULL
-            )
-            if rep.returncode == 0:
+            parametros = ["ping", "-n" if os.name == "nt" else "-c", "1", "-w", "1000", ipEquipo]
+            resultado = subprocess.run(parametros, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+            # Analizar la salida para ver si hay una respuesta real
+            if "TTL=" in resultado.stdout:  # Windows
+                listaIP.append(ipEquipo)
+                print(" [OK]")
+            elif "ttl=" in resultado.stdout.lower():  # Linux/macOS
                 listaIP.append(ipEquipo)
                 print(" [OK]")
             else:
