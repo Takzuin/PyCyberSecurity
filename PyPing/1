@@ -1,0 +1,7 @@
+
+Haciendo ping a 192.168.1.49 con 32 bytes de datos:
+Respuesta desde 192.168.1.18: Host de destino inaccesible.
+
+Estad¡sticas de ping para 192.168.1.49:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
