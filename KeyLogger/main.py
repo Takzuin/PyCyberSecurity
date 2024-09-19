@@ -1,5 +1,3 @@
-from typing import final
-
 import keyboard
 
 def main():
