@@ -22,9 +22,9 @@ class Device:
             except OSError:
                 print('IP seems down, retrying...')
                 continue
-            
+
     def capture(self):
-        pass
+        sniff(iface=self.iface, prn=self.dns, filter=f'')
     
     def watch(self):
         t1 = threading.Thread(target=self.mitm, args=())
